@@ -8,9 +8,9 @@ public class DataSetPath
 	
 	public DataSetPath()
 	{
-		GlobalDataPath = "DataRepo/GlobalSentenceDataSet.txt";
+		GlobalDataPath = "E:\\JavaTech\\Edelweiss\\CSP\\DataRepo\\GlobalSentenceDataSet.txt";
 		
-		LocalDataPath = "DataRepo/LocalSentenceDataSet.txt";
+		LocalDataPath = "E:\\JavaTech\\Edelweiss\\CSP\\DataRepo\\LocalSentenceDataSet.txt";
 	}
 	
 	/*

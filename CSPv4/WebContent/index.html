@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>C.S.P - Complete Sentence Predictor</title>
+    <script src="RES/SCRIPT/jquery-3.2.1.min.js"></script>
+    <style type="text/css">
+    	.hide{
+    		display: none;
+    	}
+    	.input{
+    		width : 300px;
+			height : 38px;
+			font-size : xx-large;
+		    margin-top : 150px;
+		    margin-left : 450px;
+		    cursor: crosshair;
+		    font-style: normal;
+    	}
+    	ul {
+		    list-style-type: none;
+		    margin-left: 450px;
+		    margin-top: 70px;
+			font-size : xx-large;
+		    padding: 0;
+		    height: 170px;
+		    width: 300px;
+		}
+		
+		li p {
+		    display: block;
+		    color: #000;
+		    padding: 8px 16px;
+		    text-decoration: none;
+		    border: 1px solid #555;
+		}
+
+		/* Change the link color on hover */
+		li p:hover {
+		    background-color: #555;
+		    color: white;
+		}
+    </style>
+    <script type="text/javascript" async="async">
+	    function ajaxCSPcall()
+	    {
+		    $.ajax
+		    ({
+			        url: "http://localhost:8080/CSPv4/REST/CALL",
+			        
+			        success: function (result)
+			        {
+			        	var res = result.split(" ");
+			        	
+			        	$("#text1").text("");
+					
+			        	$("#text2").text("");
+			
+			        	$("#text3").text("");
+			        	
+			        	$("#text1").text(res[0]);
+			
+			        	$("#text2").text(res[1]);
+			
+			        	$("#text3").text(res[2]);
+			        }
+			});
+	    }
+	    
+    	$(document).ready(function(){
+    		$(".input").keydown(function (e) {
+    			if(e.keyCode === 0 || e.keyCode === 32){
+    				document.getElementById("form1").submit();
+    				setTimeout(ajaxCSPcall,10);
+    			}
+    		});
+    		
+        	$("#text1").click(function(){
+                $(".input").val($(".input").val() + $(this).text());
+               	$(".input").focus();
+            });
+        	
+            $("#text2").click(function () {
+                $(".input").val($(".input").val() + $(this).text());
+               	$(".input").focus();
+            });
+            
+            $("#text3").click(function () {
+                $(".input").val($(".input").val() + $(this).text());
+               	$(".input").focus();
+            });
+            
+            $("#text4").click(function () {
+                $(".input").val($(".input").val() + $(this).text());
+               	$(".input").focus();
+            });
+    	});
+    	
+    </script>
+</head>
+
+<body>
+	<iframe 
+		name="dummy" 
+		width="0" 
+		height="0"
+		class="hide">
+	</iframe>
+	
+	<form 
+		enctype="text/plain" 
+		id="form1" 
+		method="POST" 
+		action="http://localhost:8080/CSPv4/REST/CALL" 
+		target="dummy">
+		
+		<input 
+			type="text" 
+			name="inputText" 
+			class="input"
+			autocomplete="off" 
+			autofocus
+        	maxlength="2048" 
+        	style="border: none; left: 0px; outline: none;"
+        	spellcheck="false">
+        	
+		<input 
+			type="submit" 
+			id="submitButton" 
+			class="hide">
+			
+	</form>
+	
+	<ul>
+        <li><p class="textDisplay" id="text1"></p></li>
+        <li><p class="textDisplay" id="text2"></p></li>
+        <li><p class="textDisplay" id="text3"></p></li>
+    </ul>
+</body>
+</html>
